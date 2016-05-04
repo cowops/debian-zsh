@@ -20,6 +20,9 @@
 - name: add sudoers
   user: name={{ item }} groups='sudo' append=yes
   with_items: "{{ system_sudoers }}"
+  
+- name: no password for sudoers
+  lineinfile: "dest=/etc/sudoers state=present regexp='^%sudo' line='%sudo ALL=(ALL) NOPASSWD: ALL'"
 
 - name: import authorized keys for root
   action: authorized_key user=root key="{{ lookup('file', item + '.pub') }}"
