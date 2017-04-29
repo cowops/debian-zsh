@@ -27,7 +27,7 @@ Example Playbook
 
     - hosts: servers
       roles:
-         - { role: loranger.debian-zsh, system_users: user1,user2, system_sudoers: user2 }
+         - { role: cowops.debian-zsh, system_users: user1,user2, system_sudoers: user2 }
 
 Tasks
 -----
