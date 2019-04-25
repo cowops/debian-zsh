@@ -1,9 +1,12 @@
 ---
 - name: install sudo & zsh
-  apt: pkg={{ item }} state=present
-  with_items:
-    - sudo
-    - zsh
+  apt:
+    name: {{ packages }}
+    state: present
+  vars:
+    packages:
+      - sudo
+      - zsh
 
 - name: add users
   user: name={{ item }} shell='/usr/bin/zsh'
@@ -20,7 +23,7 @@
 - name: add sudoers
   user: name={{ item }} groups='sudo' append=yes
   with_items: "{{ system_sudoers }}"
-  
+
 - name: no password for sudoers
   lineinfile: "dest=/etc/sudoers state=present regexp='^%sudo' line='%sudo ALL=(ALL) NOPASSWD: ALL'"
 
