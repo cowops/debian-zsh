@@ -14,6 +14,7 @@ Role Variables
 system_users:
   - user1
   - user2
+
 system_sudoers:
   - user2
 
