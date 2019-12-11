@@ -12,6 +12,11 @@
   user: name={{ item }} shell='/usr/bin/zsh'
   with_items: "{{ system_users }}"
 
+- name: remove users
+  user: name={{ item }} shell='/usr/bin/zsh' state="absent" remove="yes"
+  with_items: "{{ dead_users }}"
+  when: dead_users is defined
+
 - name: add git user
   user: name=git groups="www-data" append=yes shell="/usr/bin/zsh"
 
