@@ -11,12 +11,14 @@ This role requires a debian compliant system such as ubuntu.
 Role Variables
 --------------
 
-system_users:
-  - user1
-  - user2
-
-system_sudoers:
-  - user2
+system:
+  users:
+    - user1
+    - user2
+  sudoers:
+    - user2
+  removed:
+    - user3
 
 Dependencies
 ------------
@@ -28,7 +30,7 @@ Example Playbook
 
     - hosts: servers
       roles:
-         - { role: cowops.debian-zsh, system_users: user1,user2, system_sudoers: user2 }
+         - { role: cowops.debian-zsh, system.users: user1,user2, system.sudoers: user2 }
 
 Tasks
 -----
@@ -36,6 +38,7 @@ Tasks
   - Install [ZSH](http://www.zsh.org/) shell
   - Install sudo command
   - Add system and git users
+  - Remove deprecated users
   - Import system users' keys
   - Import root and git keys
 
