@@ -1,8 +1,0 @@
-system:
-  users:
-    - user1
-    - user2
-  sudoers:
-    - user2
-  removed:
-    - user3

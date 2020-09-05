@@ -15,4 +15,5 @@ galaxy_info:
     - wheezy
   galaxy_tags:
   - system
-dependencies: []
+dependencies:
+  - src: cowops.debian_users
